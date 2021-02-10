@@ -8,6 +8,6 @@ Welcome to the [Private] repository for the Back-End sector of our group's submi
 - Jacopo Luri
 - Jeanloup Cayuela
 - Niko Halen
-- Alfred Castillo*
+- Alfred Castillo
 
 Work In Progress
