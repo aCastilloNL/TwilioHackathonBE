@@ -1,12 +1,60 @@
 const mongoose = require("mongoose");
 
-const memberSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    skills: [String]
+const babysitterSchema = new mongoose.Schema({
+    phone_number: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    street: {
+        type: String,
+        required: true
+    },
+    building_number: {
+        type: String,
+        required: false
+    },
+    postcode: {
+        type: String,
+        required: false,
+        unique: false
+    },
+    social_media_link: {
+        type: String
+    },
+    date_of_availability: {
+        type: Date,
+        require: true
+    },
+    gender: {
+        type: String,
+        require: true
+    },
+    Age: {
+        type: String,
+        require: true
+    },
+    skills: {
+        type: String,
+        required: true
+    }
+
 })
 
-const Member = mongoose.model('Member', memberSchema);
+const Babysitter = mongoose.model('Babysitter', babysitterSchema);
 
-module.exports = Member; 
+module.exports = Babysitter;
 
