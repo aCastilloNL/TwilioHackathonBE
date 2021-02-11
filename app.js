@@ -25,17 +25,19 @@ app.post('/babysitters/find', (req, res) => {
 
 app.get('/babysitters', cors(), (req, res) => {
   Babysitter.find()
-    .then((babysitters) => res.status('201').json(babysitters))
+    .then((babysitters) => res.status('200').json(babysitters))
     .catch((error) => res.sendStatus('500'));
 });
 
 app.post('/babysitters', cors(), (req, res) => {
-  const member = new Babysitter(req.body);
-  console.log(req.body);
-  member
+  const babysitter = new Babysitter(req.body);
+  babysitter
     .save()
-    .then((member) => res.status('201').json(babysitters))
-    .catch((error) => res.sendStatus('500'));
+    .then((savedBabysitter) => res.status('201').json(savedBabysitter))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus('500');
+    });
 });
 
 module.exports = app;
