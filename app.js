@@ -1,20 +1,25 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
+require('./database/config');
 
 const Babysitter = require('./models/Babysitter');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-require('./database/config');
-
 app.get('/', (req, res) => {
   res.send('Hey Twillio');
 });
 
-app.post('/test', (req, res) => {
-  console.log(req.body);
-  res.sendStatus('200');
+app.post('/babysitters/find', (req, res) => {
+  const location = req.body.location;
+  console.log(location);
+
+  //instead of getting first babysitter should find babysitter nearest to the location
+  Babysitter.findOne()
+    .then((babysitter) => res.status('200').json(babysitter))
+    .catch((error) => res.sendStatus('500'));
 });
 
 app.get('/babysitters', (req, res) => {
