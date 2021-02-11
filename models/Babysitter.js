@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
 const babysitterSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true,
+    name: {
+        first: { type: String, required: true },
+        last: { type: String, required: true, trim: true }
     },
     phoneNumber: {
-        type: String,
+        type: Number,
         required: true,
         unique: true
     },
@@ -19,38 +15,31 @@ const babysitterSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    city: {
-        type: String,
-        required: true
-    },
-    street: {
-        type: String,
-        required: true
-    },
-    buildingNumber: {
-        type: String
-    },
-    postcode: {
-        type: String
+    address: {
+        street: { type: String, required: true },
+        number: { type: String, required: true },
+        city: { type: String, required: true },
+        postCode: { type: String, required: true }
     },
     socialMediaLink: {
-        type: String
+        type: String,
+        unique: true
     },
     dateOfAvailability: {
         type: Date,
-        require: true
+        required: true
     },
     gender: {
         type: String,
-        require: true
+        required: true
     },
     age: {
         type: Number,
-        require: true
+        min: 18,
+        required: true
     },
     skills: {
-        type: String,
-        required: true
+        type: [String]
     }
 })
 

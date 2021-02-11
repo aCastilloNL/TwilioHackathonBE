@@ -95,7 +95,7 @@
         "channel": "{{trigger.message.ChannelSid}}",
         "from": "{{flow.channel.address}}",
         "to": "{{contact.channel.address}}",
-        "body": "{{widgets.FindBabysitterApi.parsed.firstName}} {{widgets.FindBabysitterApi.parsed.lastName}} is your babysitter. You can connect with them at {{widgets.FindBabysitterApi.parsed.phoneNumber}}. They are located at {{widgets.FindBabysitterApi.parsed.city}}, {{widgets.FindBabysitterApi.parsed.street}}, {{widgets.FindBabysitterApi.parsed.buildingNumber}}"
+        "body": "{{widgets.FindBabysitterApi.parsed.name.first}} {{widgets.FindBabysitterApi.parsed.name.last}} is your babysitter. You can connect with them at {{widgets.FindBabysitterApi.parsed.phoneNumber}}. They are located at {{widgets.FindBabysitterApi.parsed.address.city}}, {{widgets.FindBabysitterApi.parsed.address.street}}, {{widgets.FindBabysitterApi.parsed.address.number}}"
       }
     },
     {

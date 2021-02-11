@@ -4,6 +4,7 @@
   "description": "Welcome to the [Private] repository for the Back-End sector of our group's Hackathon submission for the second and final official Remote EU 2020 Hackathon, sponsored by Twilio.",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongodb": "^3.6.4",
