@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const babysitterSchema = new mongoose.Schema({
-    phone_number: {
+    phoneNumber: {
         type: String,
         required: true,
         unique: true
@@ -23,7 +23,7 @@ const babysitterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    building_number: {
+    buildingNumber: {
         type: String,
         required: false
     },
@@ -32,10 +32,10 @@ const babysitterSchema = new mongoose.Schema({
         required: false,
         unique: false
     },
-    social_media_link: {
+    socialMediaLink: {
         type: String
     },
-    date_of_availability: {
+    dateOfAvailability: {
         type: Date,
         require: true
     },
@@ -43,8 +43,8 @@ const babysitterSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    Age: {
-        type: String,
+    age: {
+        type: Number,
         require: true
     },
     skills: {

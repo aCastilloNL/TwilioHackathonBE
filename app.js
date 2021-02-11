@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const Babysitter = require('./models/Member');
+const Babysitter = require('./models/Babysitter');
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
@@ -12,15 +12,15 @@ app.get('/', (req, res) => {
     res.send('Hey Twillio');
 })
 
-app.get('/members', (req, res) => {
+app.get('/babysitters', (req, res) => {
     Babysitter.find()
-    .then((members) => res.status('201').json(members))
+    .then((members) => res.status('201').json(babysitters))
     .catch((error) => res.sendStatus('500'));
 })
 
 
 
-app.post('/members', (req, res) => {
+app.post('/babysitters', (req, res) => {
     const member = new Babysitter(req.body);
     console.log(req.body);
     member
