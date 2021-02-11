@@ -1,0 +1,152 @@
+{
+  "description": "A New Flow",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "next": "WelcomeMessage",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingRequest"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 100,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "WelcomeMessage",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "FindBabysitterApi",
+          "event": "incomingMessage"
+        },
+        {
+          "next": "NoReplyMessage",
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -100,
+          "y": 120
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Hello. Do you need a babysitter? What is your location?",
+        "timeout": "300"
+      }
+    },
+    {
+      "name": "FindBabysitterApi",
+      "type": "make-http-request",
+      "transitions": [
+        {
+          "next": "FoundBabysitterMessage",
+          "event": "success"
+        },
+        {
+          "next": "NotFoundBabysitterMessage",
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -370,
+          "y": 320
+        },
+        "method": "POST",
+        "content_type": "application/json;charset=utf-8",
+        "body": "{\n\"location\": \"{{widgets.WelcomeMessage.inbound.Body}} \"\n}",
+        "url": "https://09d4d58d5ba6.ngrok.io/babysitters/find"
+      }
+    },
+    {
+      "name": "FoundBabysitterMessage",
+      "type": "send-message",
+      "transitions": [
+        {
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -360,
+          "y": 540
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "{{widgets.FindBabysitterApi.parsed.name.first}} {{widgets.FindBabysitterApi.parsed.name.last}} is your babysitter. You can connect with them at {{widgets.FindBabysitterApi.parsed.phoneNumber}}. They are located at {{widgets.FindBabysitterApi.parsed.address.city}}, {{widgets.FindBabysitterApi.parsed.address.street}}, {{widgets.FindBabysitterApi.parsed.address.number}}"
+      }
+    },
+    {
+      "name": "NoReplyMessage",
+      "type": "send-message",
+      "transitions": [
+        {
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 310,
+          "y": 310
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "Thank you for using our service. You can reach out to us at any time."
+      }
+    },
+    {
+      "name": "NotFoundBabysitterMessage",
+      "type": "send-message",
+      "transitions": [
+        {
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 40,
+          "y": 540
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "Sorry, we didn't find any babysitters close to you."
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}
