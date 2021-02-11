@@ -25,7 +25,7 @@ app.post('/babysitters', (req, res) => {
     console.log(req.body);
     member
     .save()
-    .then((member) => res.status('201').json(member))
+    .then((member) => res.status('201').json(babysitters))
     .catch((error) => res.sendStatus('500'));
 })
 
