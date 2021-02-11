@@ -6,9 +6,13 @@ const babysitterSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    name: {
+    firstName: {
         type: String,
         required: true
+    },
+    lastName: {
+        type: String,
+        required: true,
     },
     email: {
         type: String,
@@ -24,13 +28,10 @@ const babysitterSchema = new mongoose.Schema({
         required: true
     },
     buildingNumber: {
-        type: String,
-        required: false
+        type: String
     },
     postcode: {
-        type: String,
-        required: false,
-        unique: false
+        type: String
     },
     socialMediaLink: {
         type: String
@@ -51,7 +52,6 @@ const babysitterSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-
 })
 
 const Babysitter = mongoose.model('Babysitter', babysitterSchema);
