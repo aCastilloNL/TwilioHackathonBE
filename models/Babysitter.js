@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
 
 const babysitterSchema = new mongoose.Schema({
-    phone_number: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true,
+    },
+    phoneNumber: {
         type: String,
         required: true,
         unique: true
-    },
-    name: {
-        type: String,
-        required: true
     },
     email: {
         type: String,
@@ -23,19 +27,16 @@ const babysitterSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    building_number: {
-        type: String,
-        required: false
-    },
-    postcode: {
-        type: String,
-        required: false,
-        unique: false
-    },
-    social_media_link: {
+    buildingNumber: {
         type: String
     },
-    date_of_availability: {
+    postcode: {
+        type: String
+    },
+    socialMediaLink: {
+        type: String
+    },
+    dateOfAvailability: {
         type: Date,
         require: true
     },
@@ -43,15 +44,14 @@ const babysitterSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    Age: {
-        type: String,
+    age: {
+        type: Number,
         require: true
     },
     skills: {
         type: String,
         required: true
     }
-
 })
 
 const Babysitter = mongoose.model('Babysitter', babysitterSchema);
