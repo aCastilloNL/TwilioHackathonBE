@@ -1,6 +1,6 @@
 # Twilio Hackathon
 
-Welcome to the [Private] repository for the Back-End sector of our group's submission for the second and final official Remote EU 2020 Hackathon, sponsored by Twilio.
+Welcome to the repository for the Back-End sector of our group's submission to the second and final official Remote EU 2020 Hackathon, sponsored by Twilio.
 
 ### Back-End Members:
 - Victoria Kulinkovich
