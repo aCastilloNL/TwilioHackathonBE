@@ -51,7 +51,9 @@ $ # set values in .env file
 
 ## Purpose
 
-6 developers, 6 friends, 6 full-time learners in our second hackaton experience
+The Hackathon groups were each tasked with the challenge of developing a product aimed at providing disaster relief for socially impacted areas of our global economy, i.e. climate change, mental health, equal opportunities, and etcetera, within 48 hours.
+
+Using MongoDB, JS, Node, Express, Twilio API and OpenStreetMap as resources, we have concocted a Back-End environment suitable for our project's purpose of providing daycare assistance to parents and guardians alike who are unable to reach tutelage solutions for their offspring.
 
 ## La Nurserie
 
