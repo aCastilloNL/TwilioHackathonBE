@@ -72,3 +72,21 @@ La Nurserie
 - Miro
 
 ## Documentation
+
+### Maps (OpenStreetMaps)
+
+Project uses OpenStreetMaps as a Geocoding API provider, it can be replaced by updating options variable in app.js
+
+### Deploy (Heroku)
+
+Project is deployed to Heroku. https://radiant-badlands-42962.herokuapp.com/
+When creating your own deployment make sure to set enviroment variables.
+
+### Twilio
+
+To enable whatsapp communication flow:
+
+- set up twilio whatsapp testing sandbox (https://www.twilio.com/docs/whatsapp/sandbox)
+- set up twilio studio flow by importing it from twilio/flow.json file
+- update http widgets in flow to use correct endpoint (if creating your own deployment)
+- set sandbox inbound webhook to value from trigger widget in flow
