@@ -8,12 +8,12 @@ const babysitterSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
     required: true,
-    unique: true,
+    // unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    //unique: true,
   },
   address: {
     street: { type: String, required: true },
@@ -34,7 +34,7 @@ const babysitterSchema = new mongoose.Schema({
   },
   socialMediaLink: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   dateOfAvailability: {
     type: Date,
