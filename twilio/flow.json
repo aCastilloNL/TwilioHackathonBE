@@ -28,7 +28,7 @@
       "type": "send-and-wait-for-reply",
       "transitions": [
         {
-          "next": "FindBabysitterApi",
+          "next": "CheckAddress",
           "event": "incomingMessage"
         },
         {
@@ -47,7 +47,7 @@
         "service": "{{trigger.message.InstanceSid}}",
         "channel": "{{trigger.message.ChannelSid}}",
         "from": "{{flow.channel.address}}",
-        "body": "Hello. Do you need a babysitter? What is your location?",
+        "body": "Please enter your location and we will find a babysitter close to you.",
         "timeout": "300"
       }
     },
@@ -66,13 +66,13 @@
       ],
       "properties": {
         "offset": {
-          "x": -370,
-          "y": 320
+          "x": -500,
+          "y": 1100
         },
         "method": "POST",
         "content_type": "application/json;charset=utf-8",
-        "body": "{\n\"location\": \"{{widgets.WelcomeMessage.inbound.Body}} \"\n}",
-        "url": "https://09d4d58d5ba6.ngrok.io/babysitters/find"
+        "body": "{\"latitude\":{{widgets.CheckAddress.parsed.latitude}},\n\"longitude\":{{widgets.CheckAddress.parsed.longitude}}}",
+        "url": "https://fa7b8fcebe6f.ngrok.io/babysitters/find"
       }
     },
     {
@@ -88,8 +88,8 @@
       ],
       "properties": {
         "offset": {
-          "x": -360,
-          "y": 540
+          "x": -600,
+          "y": 1420
         },
         "service": "{{trigger.message.InstanceSid}}",
         "channel": "{{trigger.message.ChannelSid}}",
@@ -111,8 +111,8 @@
       ],
       "properties": {
         "offset": {
-          "x": 310,
-          "y": 310
+          "x": 220,
+          "y": 670
         },
         "service": "{{trigger.message.InstanceSid}}",
         "channel": "{{trigger.message.ChannelSid}}",
@@ -134,14 +134,159 @@
       ],
       "properties": {
         "offset": {
-          "x": 40,
-          "y": 540
+          "x": -210,
+          "y": 1430
         },
         "service": "{{trigger.message.InstanceSid}}",
         "channel": "{{trigger.message.ChannelSid}}",
         "from": "{{flow.channel.address}}",
         "to": "{{contact.channel.address}}",
         "body": "Sorry, we didn't find any babysitters close to you."
+      }
+    },
+    {
+      "name": "CheckAddress",
+      "type": "make-http-request",
+      "transitions": [
+        {
+          "next": "ConfirmAddressMessage",
+          "event": "success"
+        },
+        {
+          "next": "NotFoundAddressMessage",
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -390,
+          "y": 340
+        },
+        "method": "POST",
+        "content_type": "application/json;charset=utf-8",
+        "body": "{\n\"location\": \"{{widgets.WelcomeMessage.inbound.Body}} \"\n}",
+        "url": "https://fa7b8fcebe6f.ngrok.io/location/check"
+      }
+    },
+    {
+      "name": "ConfirmAddressMessage",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "ConfirmAddressOptions",
+          "event": "incomingMessage"
+        },
+        {
+          "next": "NoReplyMessage",
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -370,
+          "y": 600
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "body": "Please confirm that your address is: \"{{widgets.CheckAddress.parsed. \nformattedAddress}}\". Reply Yes to confirm and No if that is not right address.",
+        "timeout": "300"
+      }
+    },
+    {
+      "name": "ConfirmAddressOptions",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "ConfirmAddressMessage",
+          "event": "noMatch"
+        },
+        {
+          "next": "FindBabysitterApi",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value matches_any_of Yes, y",
+              "arguments": [
+                "{{widgets.ConfirmAddressMessage.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "Yes, y"
+            }
+          ]
+        },
+        {
+          "next": "WrongAddressMessage",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value matches_any_of No, n",
+              "arguments": [
+                "{{widgets.ConfirmAddressMessage.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "No, n"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.ConfirmAddressMessage.inbound.Body}}",
+        "offset": {
+          "x": -360,
+          "y": 830
+        }
+      }
+    },
+    {
+      "name": "NotFoundAddressMessage",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "WelcomeMessage",
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -750,
+          "y": 330
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "We didn't find your address. Please try entering your location in a different way."
+      }
+    },
+    {
+      "name": "WrongAddressMessage",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "WelcomeMessage",
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 10,
+          "y": 1080
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "Please try entering your location in a different way."
       }
     }
   ],
