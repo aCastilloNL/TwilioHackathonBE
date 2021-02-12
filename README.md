@@ -19,11 +19,11 @@ Welcome to the repository for the Back-End sector of our group's submission to t
 
 - Victoria Kulinkovich https://github.com/KulinkovichVA
 - Dima Piskun https://github.com/DzmitryPS
-- Alfred Castillo Alfred Castillo https://github.com/aCastilloNL
+- Alfred Castillo https://github.com/aCastilloNL
 
 ### Front-End Members:
 
-(Separate repository)
+(Separate repository: https://github.com/JacopoLuri/TwilioHackaton)
 
 - Jacopo Luri https://github.com/JacopoLuri
 - Jeanloup Cayuela https://github.com/j-loup30400
