@@ -23,7 +23,8 @@ Welcome to the repository for the Back-End sector of our group's submission to t
 
 ### Front-End Members:
 
-(Separate repository: https://github.com/JacopoLuri/TwilioHackaton)
+Separate repository: https://github.com/JacopoLuri/TwilioHackaton
+Deployed Front-end: https://lucid-feynman-60c600.netlify.app/
 
 - Jacopo Luri https://github.com/JacopoLuri
 - Jeanloup Cayuela https://github.com/j-loup30400
