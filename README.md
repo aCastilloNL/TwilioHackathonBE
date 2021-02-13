@@ -1,6 +1,6 @@
 # La Nurserie
 
-## “A bit of help and a lot of love”
+## “A little bit of help with a whole lot of love”
 
 # Twilio / WCS Hackaton Project
 
