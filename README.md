@@ -50,7 +50,7 @@ $ # set values in .env file
 - [Wireframes Packages and Softwares used](#wireframes-packages-and-softwares-used)
 - [Documentation](#documentation)
 
-## Purpose
+## Scope
 
 The Hackathon group participants were each tasked with the challenge of developing a product aimed at providing disaster relief for socially impacted areas from our global economy, i.e. climate change, mental health, equal opportunities, and etcetera, within 48 hours.
 
@@ -89,7 +89,7 @@ To enable whatsapp communication flow:
 
 Project uses OpenStreetMaps as a Geocoding API provider, it can be replaced by updating options variable in app.js
 
-### Deploy (Heroku)
+### Deployment (Heroku)
 
 Project is deployed to Heroku. https://radiant-badlands-42962.herokuapp.com/
 When creating your own deployment make sure to set enviroment variables.
