@@ -2,7 +2,7 @@
 
 ## “A little bit of help with a whole lot of love”
 
-# Twilio / WCS Hackaton Project
+# Twilio / WCS Hackathon Project
 
 Welcome to the repository for the Back-End sector of our group's submission to the second and final official Wild Code School Remote EU 2021 Hackathon, sponsored by Twilio.
 
@@ -41,10 +41,10 @@ $ # set values in .env file
 
 ```
 
-## List of Contents
+## Table of Contents
 
 - [Install](#install)
-- [List of Contents](#list-of-contents)
+- [Table of Contents](#list-of-contents)
 - [Purpose](#purpose)
 - [La Nurserie](#la-nurserie)
 - [Wireframes Packages and Softwares used](#wireframes-packages-and-softwares-used)
@@ -57,8 +57,6 @@ The Hackathon group participants were each tasked with the challenge of developi
 Using MongoDB, JS, Node, Express, Twilio API and OpenStreetMap as resources, we have concocted a Back-End environment suitable for our project's purpose of providing daycare assistance to parents and guardians alike who are unable to reach tutelage solutions for their offspring.
 
 ## La Nurserie
-
-La Nurserie
 
 Are you a parent or guardian? Do you struggle with options of finding who to care for your little ones? Send us a WhatsApp message at La Nurserie! We have the solution for you!
 
