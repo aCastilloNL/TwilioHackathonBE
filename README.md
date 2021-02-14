@@ -44,8 +44,8 @@ $ # set values in .env file
 ## Table of Contents
 
 - [Install](#install)
-- [Table of Contents](#list-of-contents)
-- [Purpose](#purpose)
+- [Table of Contents](#table-of-contents)
+- [Scope](#scope)
 - [La Nurserie](#la-nurserie)
 - [Wireframes Packages and Softwares used](#wireframes-packages-and-softwares-used)
 - [Documentation](#documentation)
