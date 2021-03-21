@@ -18,8 +18,8 @@ Welcome to the repository for the Back-End sector of our group's submission to t
 ### Back-End Devs:
 
 - Victoria Kulinkovich https://github.com/KulinkovichVA
-- Dima Piskun https://github.com/DzmitryPS
 - Alfred Castillo https://github.com/aCastilloNL
+- Dima Piskun https://github.com/DzmitryPS
 
 ### Front-End Devs:
 
@@ -52,7 +52,7 @@ $ # set values in .env file
 
 ## Scope
 
-The Hackathon group participants were each tasked with the challenge of developing a product aimed at providing disaster relief for socially impacted areas from our global economy, i.e. climate change, mental health, equal opportunities, and etcetera, within 48 hours.
+The Hackathon group participants were each tasked with the challenge of developing a product aimed at providing disaster relief for socially impacted areas of our global economy, i.e. climate change, mental health, equal opportunities, etc, within 48 hours.
 
 Using MongoDB, JS, Node, Express, Twilio API and OpenStreetMap as resources, we have concocted a Back-End environment suitable for our project's purpose of providing daycare assistance to parents and guardians alike who are unable to reach tutelage solutions for their offspring.
 
